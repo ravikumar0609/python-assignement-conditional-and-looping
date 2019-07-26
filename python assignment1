@@ -1,0 +1,155 @@
+#1.Write a program to check if a given year is a leap year or not.
+#Leap year: a year is said to be a leap year, if the year is exactly
+#divisible by 4 but and not divisible by 100
+
+year = int(input("Enter the year"))
+if (year%4==0)&(year%100!=0):
+    print(year,"is a leap year")
+else:
+    print(year,"is not a leap year")
+    
+output:
+Enter the year2004
+2004 is a leap year
+
+#2.Write a program to check whether a triangle is valid or not if angles are given. Valid Triangle: 
+#Sum of all the angles should be 180. All the angles should be greater than zero
+angle1 = int(input("enter angle1 "))
+angle2 = int(input("enter angle2 "))
+angle3 = int(input("enter angle3 "))
+sum=0
+if (angle1>0)&(angle2>0):
+    if angle3>0:
+        sum=angle1+angle2+angle3
+        if sum==180:
+            print("given angles will make a triangle")
+        else:
+            print("given angles will not make a triangle")
+    else:
+        print("angle should be non zero please give correct input")
+else:
+    print("angles should be non zero please give correct input")
+output:
+enter angle1 60
+enter angle2 60
+enter angle3 60
+given angles will make a triangle
+
+
+#3.Write a program to input electricity unit charge and calculate the total electricity bill according to the given conditions:
+
+#- For the first 50 units Rs. 0.50/unit
+#- For the next 100 units Rs. 0.75/unit
+#- For the next 100 units Rs. 1.20/unit
+#- For unit above 250 Rs. 1.50/unit
+
+#Also, an additional surcharge of 20% should be added to the bill.
+
+unit = int(input("enter the unit used "))
+amount=0
+total_charge=0
+if unit<50:
+    amount=unit*0.50
+    total_charge=amount+(amount*0.20)
+    print("you have to pay ",total_charge)
+if unit<=150:
+    amount=25+((unit-50)*0.75)
+    total_charge=amount+(amount*0.20)
+    print("you have to pay ",total_charge)
+if unit<250:
+    amount=100+((unit-150)*1.20)
+    total_charge=amount+(amount*0.20)
+    print("you have to pay ",total_charge)
+else:
+    amount=220+((unit-250)*1.50)
+    total_charge=amount+(amount*0.20)
+    print("you have to pay ",total_charge)
+Output:
+enter the unit used150
+you have to pay  120.0
+
+
+#4.Given 2 numbers, a for the purchase amount in rupees, and b for the quality of service(1-5) received, Calculate the tip according to the following table
+#Quality 	Tip Percent
+#1 	5%
+#2 	10%
+#3 	15%
+#4 	20%
+#5 	25%
+
+purchase_amount=int(input("enter the purchase amount "))
+quality=int(input("rate between 1-5  "))
+tip=0
+if (purchase_amount>0) & (quality > 0):
+    tip=purchase_amount*((quality*5)/100)
+print("Tip of the day",tip)
+
+output:
+
+enter the purchase amount 100
+rate between 1-5  2
+Tip of the day 10.0
+
+
+#6.Print all the numbers from 1 to 50 but skip all multiples of 7. 
+#Also, skip any number that has a 7 in it, such as 27.
+
+for value in range(1,51):
+    if(value%7==0)|(value%10==7):
+        pass
+    else:
+        print(value)
+        continue
+        
+ #8.Write a program to print Collatz Conjecture sequence for number 50.
+#Collatz Conjecture: Take any number n. If n is even, divide it by 2, if
+#n is odd, multiply it by 3 and add 1. Repeat the process indefinitely
+#and you'll eventually reach 1.
+number=int(input("enter the number "))
+while(number!=1):
+    if(number%2==0):
+        number=number//2
+    else:
+        number=3*number+1
+    print(number)
+outut:
+enter the number 10
+5
+16
+8
+4
+2
+1
+
+#10.Write a program that prompts the user to input an integer and then outputs the number with the digits reversed. 
+#For example, if the input is 12345, the output should be 54321
+n=12345
+a=0
+reverse=0
+while(n>0):
+    a=n%10
+    reverse=reverse*10+a
+    n=n//10
+print(reverse)
+
+output:54321
+
+#Write a program to count the total number of notes in a given amount. Valid notes:10, 20, 50, 100, 500, 2000 
+ #   eg : amount 2510, 
+  #      expected output is 2000=1,500=1,10=1
+amt=int(input("enter the amount"))
+valid=[2000,500,100,50,20,10]
+count=0
+for i in valid:
+    if amt>=i:
+        count=amt//i
+        amt=amt-(count*i)
+        print(i,"number of notes are present= ",count) 
+    i=i+1
+output:
+enter the amount2510
+2000 number of notes are present=  1
+500 number of notes are present=  1
+10 number of notes are present=  1
+
+
