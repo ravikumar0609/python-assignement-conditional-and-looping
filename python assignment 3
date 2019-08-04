@@ -1,0 +1,180 @@
+# # 
+# 1.Write a program to count the number of occurrences of a word in below sentenses.
+# Input : "Python has traditionally checked the up-to-dateness of bytecode cache files by comparing the source metadata with source metadata saved in the cache file header when it was generated.   
+#Output : {"Python":2,"metadata":2,... }
+
+
+input1 ="""Python has traditionally checked the up-to-dateness of bytecode cache files by comparing the source metadata with source metadata saved in the cache file header when it was generated.While effective, this invalidation method has its drawbacks. When filesystem timestamps are too coarse, Python can miss source updates, leading to user confusion. Additionally, having a timestamp in the cache file is problematic for build reproducibility and content-based build systems."""
+#input1="""My name is ravi kumar.My name is ravi kumar kumar ravi is"""
+temp=len(input1)
+dict1={}
+input2=input1.replace("-"," ")
+input2=input1.replace(".","")
+list1=input2.split(" ")
+l2=set(list1)
+count=1
+for i in l2:
+  for j in list1:
+    if(i==j):
+      count=count+1
+  dict1[i]= count
+  count=0
+print(dict1)
+
+output:
+{'Additionally,': 2, 'When': 1, 'its': 1, 'are': 1, 'effective,': 1, 'Python': 2, 'coarse,': 1, 'and': 1, 'of': 1, 'bytecode': 1, 'file': 2, 'was': 1, 'timestamps': 1, 'the': 4, 'in': 2, 'for': 1, 'filesystem': 1, 'up-to-dateness': 1, 'header': 1, 'saved': 1, 'timestamp': 1, 'build': 2, 'traditionally': 1, 'having': 1, 'when': 1, 'is': 1, 'files': 1, 'has': 2, 'user': 1, 'method': 1, 'miss': 1, 'source': 3, 'with': 1, 'updates,': 1, 'systems': 1, 'to': 1, 'reproducibility': 1, 'cache': 3, 'invalidation': 1, 'drawbacks': 1, 'leading': 1, 'problematic': 1, 'confusion': 1, 'comparing': 1, 'generatedWhile': 1, 'this': 1, 'metadata': 2, 'checked': 1, 'by': 1, 'can': 1, 'content-based': 1, 'too': 1, 'it': 1, 'a': 1}
+
+# 2.Given a dictionary that associates the names of states with a list of the names of cities that appear in it,write a program that creates a new dictionary that associates the name of a city with the list of states that it appears in.
+# As an example, if the first dictionary is
+
+# Input :
+# states = {'New Hampshire': ['Concord', 'Hanover'],
+
+# 'Massachusetts': ['Boston', 'Concord', 'Springfield'],
+
+# 'Illinois': ['Chicago', 'Springfield', 'Peoria']
+
+# }
+
+# Output:
+# cities = {'Hanover': ['New Hampshire'],
+
+# 'Chicago': ['Illinois'],'Boston': ['Massachusetts'], 
+
+# 'Peoria': ['Illinois'],'Concord': ['New Hampshire','Massachusetts'],
+
+# 'Springfield': ['Massachusetts', 'Illinois']
+states = {'New Hampshire': ['Concord', 'Hanover'],'Massachusetts': ['Boston', 'Concord', 'Springfield'],'Illinois': ['Chicago', 'Springfield', 'Peoria']}
+output={}
+temp=set()
+keys=list(states.keys())
+val=list(states.values())
+for i in states:
+   for j in states[i]:
+      temp.add(j)
+for i in l1:
+  for j in val:
+    if i in j:
+      index1=val.index(j)
+      if i in output:
+        output[i]=list((output[i],keys[index1]))
+      else:
+        output[i]=keys[index1]
+print(output)
+
+output:
+{'Chicago': 'Illinois', 'Hanover': 'New Hampshire', 'Springfield': ['Massachusetts', 'Illinois'], 'Boston': 'Massachusetts', 'Concord': ['New Hampshire', 'Massachusetts'], 'Peoria': 'Illinois'}
+
+# 3.Given a list of test scores, where the maximum score is 100, write code that prints the number of scores that are in the range 0-9, 10-19, 20-29, ... 80-89, 90-100. For example, given the list of scores : [ 12, 90, 100, 52, 56, 76, 92, 83, 39, 77, 73, 70, 80 ]
+
+# The output should be :
+
+# {(0,9): 0, (10,19): 1, (20,29): 0, (30,39): 1, (40,49): 0, (50,59): 2, (60,69): 0, (70,79): 4, (80,89): 2, (90,100): 3}
+list1=[(0,9),(10,19),(20,29),(30,39),(40,49),(50,59),(60,69),(70,79),(80,89),(90,100)]
+marks=[12,90,100,52,56,76,92,83,39,77,73,70,80]
+result={}
+count=0
+for i in list1:
+  for j in marks:
+    if(j >= i[0]) and (j<=i[1]):
+      count=count+1
+  result[i]=count
+  count=0
+print(result)
+output:
+{(0, 9): 0, (10, 19): 1, (20, 29): 0, (30, 39): 1, (40, 49): 0, (50, 59): 2, (60, 69): 0, (70, 79): 4, (80, 89): 2, (90, 100): 3}
+
+# 4.Consider a data, where the name of the restaurant, the type of restaurant, and the ratings are provided. Assume these values have already been read into a list of lists of the form below:
+# restaurants = [ [ Acme, Italian, 2, 4, 3, 5],[ Flintstone, Steak, 5, 2, 4, 3, 3, 4],[ Bella Troy, Italian, 1, 4, 5] ]
+
+# Write a program code that prints all Italian restaurants in the restaurants list that have no ratings of value 1 and at least one rating of value 5.
+
+# In the above example, Acme would be printed in the output, but Flintstone and Bella Troy would not. Flintstone is not Italian and Bella Troy has a 1 rating.
+
+
+resturant = [ [ 'Acme', 'Italian', 2, 4, 3, 5],[ 'Flintstone', 'Steak', 5, 2, 4, 3, 3, 4],[ 'Bella Troy', 'Italian',1, 4,5]]
+bestresturant=set()
+inputresturanttype="Italian"
+for i in range(0,len(resturant)):
+  newresturanttype=resturant[i][1]
+  if inputresturanttype==newresturanttype:
+    for j in resturant[i][:]:
+      if 5 in resturant[i][:] and 1 not in resturant[i][:]:
+        bestresturant.add(resturant[i][0])
+  else:
+    continue
+print(bestresturant)
+output:
+{'Acme'}
+
+# 5.In the pre-smartphone era,each number key is assigned a subset of the alphabet 
+# {a,b,…,z}: 2 is assigned the subset {a,b,c}, 3 is assigned {d,e,f}, 4 is assigned {g,h,i}, 5 is assigned {j,k,l}, 6 is assigned {m,n,o}, 7 is assigned {p,q,r,s}, 8 is assigned {t,u,v} and 9 is assigned {w,x,y,z}.
+
+# Write a program to find the characters generated using key 9999335533 output should be "zeke"
+keypad={2:('a','b','c'),3:('d','e','f'),4:('g','h','i'),5:('j','k','l'),6:('m','n','o'),7:('p','q','r','s'),8:('t','u','v'),9:('w','x','y','z')}
+inputnumber="9999335533"
+keypressedcount=[]
+count=1
+message=""
+for i,j in enumerate(inputnumber):
+  if i==0:
+    temp=j
+  elif(temp==j):
+    count=count+1
+    if i==len(inputnumber)-1:
+      keypressedcount.append((int(temp),count))
+  else:  
+    keypressedcount.append((int(temp),count))
+    temp=j
+    count=1
+for k in keypressedcount:
+  keypadtext=dict1[k[0]]
+  if k[1]>len(keypadtext):
+    index=k[1]-len(keypadtext)
+  else:
+    index=k[1]
+  message=message+keypadtext[index-1]
+print("mobile keypad :",keypad)
+print("input :",inputnumber)
+print("key pressed count :",keypressedcount)
+print("message : ",message)
+
+output:
+mobile keypad : {2: ('a', 'b', 'c'), 3: ('d', 'e', 'f'), 4: ('g', 'h', 'i'), 5: ('j', 'k', 'l'), 6: ('m', 'n', 'o'), 7: ('p', 'q', 'r', 's'), 8: ('t', 'u', 'v'), 9: ('w', 'x', 'y', 'z')}
+input : 9999335533
+key pressed count : [(9, 4), (3, 2), (5, 2), (3, 2)]
+message :  zeke
+
+
+
+# 7.You are given three sentences in three strings str1,str2,str3. Assume the sentences contain no punctuation and have a single space between the words. Write a piece of code that prints the following:
+
+# (a) The set of words that appear in str1 but not in str2 and not in str3.
+
+# (b) The set of words that appear in all three sentences.
+
+# (c) The set of words that appear in exactly two of the three sentences
+
+# Remember, words are not case sensitive. For example, if you are given the sentences: str1 = "Hail dear old Rensselaer the college of our heart" str2 = "For dear old Rensselaer we all must do our part" str3 = "True to old Rensselaer we will always strive to be"
+
+str1 = "Hail dear old Rensselaer the college of our heart"
+str2 = "For dear old Rensselaer we all must do our part"
+str3 = "True to old Rensselaer we will always strive to be"
+listofstr1=str1.split(" ")
+listofstr2=str2.split(" ")
+listofstr3=str3.split(" ")
+setoflist1=set(listofstr1)
+setoflist2=set(listofstr2)
+setoflist3=set(listofstr3)
+
+question2=setoflist1.intersection(setoflist2,setoflist3)
+print(question2)
+question1=setoflist1.difference(setoflist2,setoflist3)
+print(question1)
+temp1=setoflist1.intersection(setoflist2)
+temp2=setoflist2.intersection(setoflist3)
+question3=temp1.symmetric_difference(temp2)
+print(question3)
+{'old', 'Rensselaer'}
+{'Hail', 'of', 'heart', 'the', 'college'}
+{'dear', 'we', 'our'}
