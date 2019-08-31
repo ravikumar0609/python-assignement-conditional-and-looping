@@ -1,0 +1,70 @@
+class customer:
+  
+  def __init__(self,name):
+    self.name=name
+  def displaystock(self):
+    return ("Available stock is {} in our store".format(rentshop.stock))
+  def rentbike(self,noofbike,rentbasis):
+    self.noofbike=noofbike
+    self.rentbasis=rentbasis
+    if self.noofbike<1:
+      print("please enter the correct value")
+    elif self.rentbasis and self.noofbike:
+      rentshop.stock -= self.noofbike
+      return(self.noofbike,self.rentbasis,rentshop.stock)
+  def returnbike(self):
+    if self.noofbike and self.rentbasis:
+      rentshop.billing(self)
+    else:
+      return 0,0,0
+      
+class rentshop(customer):
+  stock=10
+  
+  @classmethod
+  def get_stock(cls,stock):
+    cls.stock=stock
+  def __init__(self,name,noofbike,rentbasis):
+    self.bill=0
+    super().__init__(name,noofbike,rentbasis)
+  
+  def displaystock(self):
+    print("we have {} stock left in shop".format(self.stock))
+    return self.stock
+  def billing(self):
+    if self.rentbasis=="daily":
+      self.bill=self.noofbike*5
+      print("bill is",self.bill)
+      rentshop.stock +=self.noofbike
+    elif self.rentbasis=="weekly":
+      self.bill=self.noofbike*20
+    else:
+      self.bill=self.noofbike*60
+    if (3 <= self.noofbike <= 5):
+      print("You are eligible for Family rental promotion of 30% discount")
+      self.bill = self.bill * 0.7 
+    print("bill is",self.bill)
+    print("available stock is",rentshop.stock)
+    return self.bill
+d1=customer("ravi")
+print(d1.displaystock())
+d1.rentbike(4,"daily")
+print("after ravi booked the bike",d1.displaystock())
+d2=customer("xyz")
+d2.rentbike(1,"weekly")
+print("After XYZ booked the bike",d2.displaystock())
+d1.returnbike()
+print("after ravi returned bike",d1.displaystock())
+
+Output:
+Available stock is 10 in our store
+after ravi booked the bike Available stock is 6 in our store
+After XYZ booked the bike Available stock is 5 in our store
+bill is 20
+You are eligible for Family rental promotion of 30% discount
+bill is 14.0
+available stock is 9
+after ravi returned bike Available stock is 9 in our store
+
+
+    
