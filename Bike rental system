@@ -20,10 +20,6 @@ class customer:
       
 class rentshop(customer):
   stock=10
-  
-  @classmethod
-  def get_stock(cls,stock):
-    cls.stock=stock
   def __init__(self,name,noofbike,rentbasis):
     self.bill=0
     super().__init__(name,noofbike,rentbasis)
